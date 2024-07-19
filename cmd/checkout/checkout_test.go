@@ -82,6 +82,12 @@ func TestGetTotalPrice(t *testing.T) {
 			want:    240,
 			wantErr: false,
 		},
+		{
+			name:      "Item does not exist",
+			scanItems: []string{"Z"},
+			want:      0,
+			wantErr:   true,
+		},
 	}
 
 	for _, tt := range tests {
