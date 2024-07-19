@@ -65,7 +65,7 @@ func (c *Checkout) GetTotalPrice() (int, error) {
 
 		// apply discount if applicable
 		if product.DiscountQuantity > 0 && qty >= product.DiscountQuantity {
-			totalPrice += (qty / product.DiscountQuantity) * product.DiscountedPrice
+			totalPrice += (qty/product.DiscountQuantity)*product.DiscountedPrice + (qty%product.DiscountQuantity)*product.UnitPrice
 		} else {
 			totalPrice += qty * product.UnitPrice
 		}
