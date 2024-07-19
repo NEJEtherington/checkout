@@ -42,7 +42,7 @@ func (c *Checkout) Scan(SKU string) error {
 	product, ok := c.catalogue[SKU]
 	if !ok {
 
-		return fmt.Errorf("invalid SKU: %s", SKU)
+		return fmt.Errorf("Invalid SKU: %s", SKU)
 	}
 	// otherwise add the product to the basket
 	c.Basket[product.SKU]++
@@ -60,7 +60,7 @@ func (c *Checkout) GetTotalPrice() (int, error) {
 		product, ok := c.catalogue[SKU]
 		if !ok {
 
-			return 0, fmt.Errorf("invalid SKU: %s", SKU)
+			return 0, fmt.Errorf("Invalid SKU: %s", SKU)
 		}
 
 		// apply discount if applicable

@@ -15,7 +15,7 @@ The supermarket's inventory comprises only the above four items at present and e
 
 `go run internal/main.go`
 
-You will then be prompted to scan an item, which is done by tpying an SKU (i.e. A, B, C, or D) and hitting return.  The total cost of your basket, net of any discounts,  will be displayed as each item is added.
+You will then be prompted to scan an item, which is done by typing an SKU (i.e. A, B, C, or D) and hitting return.  The total cost of your basket, net of any discounts,  will be displayed as each item is added.
 
 ## Testing
 
