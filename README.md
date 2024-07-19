@@ -10,3 +10,7 @@ Implementation of a supermarket checkout that calculates the total price of a nu
 | D   | 15         |               |
 
 The supermarket's inventory comprises only the above four items at present and entering any SKU other than A, B, C, or D will result in a error.
+
+## Testing
+
+`go test ./cmd/checkout`
