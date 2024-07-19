@@ -26,15 +26,18 @@ func TestScan(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+
 			err := checkout.Scan(tt.SKU)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Scan error = %v, expected %v", err, tt.wantErr)
 			}
-			_, ok := checkout.Basket[tt.SKU]
-			if !ok {
-				t.Errorf("Failed to add %s to  basket", tt.SKU)
-			}
 
+			if !tt.wantErr {
+				_, ok := checkout.Basket[tt.SKU]
+				if !ok {
+					t.Errorf("Failed to add %s to  basket", tt.SKU)
+				}
+			}
 		})
 	}
 }

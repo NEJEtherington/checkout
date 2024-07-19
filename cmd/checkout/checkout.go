@@ -39,12 +39,13 @@ func (c *Checkout) Scan(SKU string) error {
 
 	// check if SKU exists in products slice
 	// return an error if not
-	_, ok := c.catalogue[SKU]
+	product, ok := c.catalogue[SKU]
 	if !ok {
 
 		return fmt.Errorf("invalid SKU: %s", SKU)
 	}
 	// otherwise add the product to the basket
+	c.Basket[product.SKU]++
 
 	return nil
 }
