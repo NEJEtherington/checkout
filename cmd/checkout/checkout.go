@@ -55,7 +55,7 @@ func (c *Checkout) GetTotalPrice() (int, error) {
 	totalPrice := 0
 
 	// range over basket
-	for SKU, _ := range c.Basket {
+	for SKU, qty := range c.Basket {
 		// check if SKU exists in Checkout catalogue map
 		product, ok := c.catalogue[SKU]
 		if !ok {
@@ -63,7 +63,7 @@ func (c *Checkout) GetTotalPrice() (int, error) {
 			return 0, fmt.Errorf("invalid SKU: %s", SKU)
 		}
 
-		totalPrice += product.UnitPrice
+		totalPrice += qty * product.UnitPrice
 	}
 
 	// check whether product is subject to discount - use modulo
