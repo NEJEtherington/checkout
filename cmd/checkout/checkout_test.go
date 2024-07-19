@@ -49,7 +49,14 @@ func TestGetTotalPrice(t *testing.T) {
 		scanItems []string // items to be scanned to populate shopping basket
 		want      int
 		wantErr   bool
-	}{}
+	}{
+		{
+			name:      "Single item",
+			scanItems: []string{"A"},
+			want:      50,
+			wantErr:   false,
+		},
+	}
 
 	for _, tt := range tests {
 		checkout := NewCheckout(Inventory)
