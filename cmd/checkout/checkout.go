@@ -63,11 +63,13 @@ func (c *Checkout) GetTotalPrice() (int, error) {
 			return 0, fmt.Errorf("invalid SKU: %s", SKU)
 		}
 
-		totalPrice += qty * product.UnitPrice
+		// apply discount if applicable
+		if product.DiscountQuantity > 0 && qty >= product.DiscountQuantity {
+			totalPrice += (qty / product.DiscountQuantity) * product.DiscountedPrice
+		} else {
+			totalPrice += qty * product.UnitPrice
+		}
 	}
-
-	// check whether product is subject to discount - use modulo
-	// update the checkout totalPrice with the relevant amount
 
 	return totalPrice, nil
 }
