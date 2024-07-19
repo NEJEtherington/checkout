@@ -17,6 +17,11 @@ func TestScan(t *testing.T) {
 			SKU:     "Z",
 			wantErr: true,
 		},
+		{
+			name:    "Product exists",
+			SKU:     "A",
+			wantErr: false,
+		},
 	}
 
 	for _, tt := range tests {
