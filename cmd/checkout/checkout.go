@@ -39,9 +39,14 @@ func (c *Checkout) Scan(SKU string) error {
 
 	// check if SKU exists in products slice
 	// return an error if not
+	_, ok := c.catalogue[SKU]
+	if !ok {
+
+		return fmt.Errorf("invalid SKU: %s", SKU)
+	}
 	// otherwise add the product to the basket
 
-	return fmt.Errorf("invalid SKU: %s", SKU)
+	return nil
 }
 
 // GetTotalPrice calculates the total price of the Checkout Basket, net of any discounts

@@ -30,6 +30,11 @@ func TestScan(t *testing.T) {
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Scan error = %v, expected %v", err, tt.wantErr)
 			}
+			_, ok := checkout.Basket[tt.SKU]
+			if !ok {
+				t.Errorf("Failed to add %s to  basket", tt.SKU)
+			}
+
 		})
 	}
 }
