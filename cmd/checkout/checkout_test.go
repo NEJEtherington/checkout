@@ -56,6 +56,12 @@ func TestGetTotalPrice(t *testing.T) {
 			want:      50,
 			wantErr:   false,
 		},
+		{
+			name:      "Two of the same item not qualifying for a discount",
+			scanItems: []string{"A", "A"},
+			want:      100,
+			wantErr:   false,
+		},
 	}
 
 	for _, tt := range tests {
