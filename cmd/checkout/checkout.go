@@ -1,5 +1,9 @@
 package checkout
 
+import (
+	"fmt"
+)
+
 type ICheckout interface {
 	Scan(SKU string) error
 	GetTotalPrice() (int, error)
@@ -37,7 +41,7 @@ func (c *Checkout) Scan(SKU string) error {
 	// return an error if not
 	// otherwise add the product to the basket
 
-	return nil
+	return fmt.Errorf("invalid SKU: %s", SKU)
 }
 
 // GetTotalPrice calculates the total price of the Checkout Basket, net of any discounts
