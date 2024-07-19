@@ -55,11 +55,19 @@ func (c *Checkout) GetTotalPrice() (int, error) {
 	totalPrice := 0
 
 	// range over basket
-	// check if SKU exists in checkout products slice
-	// return an error if not
+	for SKU, _ := range c.Basket {
+		// check if SKU exists in Checkout catalogue map
+		product, ok := c.catalogue[SKU]
+		if !ok {
+
+			return 0, fmt.Errorf("invalid SKU: %s", SKU)
+		}
+
+		totalPrice += product.UnitPrice
+	}
+
 	// check whether product is subject to discount - use modulo
 	// update the checkout totalPrice with the relevant amount
-	// return the checkout totalPrice
 
 	return totalPrice, nil
 }
